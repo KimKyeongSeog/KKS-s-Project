@@ -1,0 +1,3 @@
+# Typescript-TailwindCSS-CRA Template
+
+0x8Fcc590FcdDBB0BdDD53f2af18939122e6444015
