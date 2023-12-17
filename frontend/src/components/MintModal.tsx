@@ -44,22 +44,32 @@ const MintModal: FC<MintModalProps> = ({
 
       setMetadata(response.data);
       setMetadataArray([response.data, ...metadataArray]);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   };
   return (
-    <div>
-      <div>
+    <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 flex justify-center items-center">
+      <div className="p-8 bg-white rounded-xl">
         {metadata ? (
-          <div>
-            <img src={metadata.image} alt={metadata.name} />
-            <div>{metadata.name}</div>
-            <div>{metadata.description}</div>
-            <ul>
+          <div className="w-60">
+            <img
+              className="w-60 h-60"
+              src={metadata.image}
+              alt={metadata.name}
+            />
+            <div className="font-semibold mt-4 text-center">
+              {metadata.name}
+            </div>
+            <div className="mx-2 text-sm text-center">
+              {metadata.description}
+            </div>
+            <ul className="mt-1 flex flex-wrap gap-1">
               {metadata.attributes.map((v, i) => (
                 <li key={i}>
-                  <span>{v.trait_type}</span>
+                  <span className="font-semibold">{v.trait_type}</span>
                   <span> : {v.value}</span>
                 </li>
               ))}

@@ -21,28 +21,31 @@ const Header: FC<HeaderProps> = ({ account, setAccount }) => {
   };
 
   return (
-    <header className="p-2 flex justify-between">
-      <div className="flex gap-4">
-        <Link to="/">Home</Link>
-        <Link to="/my">My</Link>
-        <Link to="/sale">Sale</Link>
-      </div>
-      <div className="bg-red-100">
-        {account ? (
-          <div>
-            <span>
-              {account.substring(0, 7)}...
-              {account.substring(account.length - 5)}
-            </span>
-            <button onClick={() => setAccount("")}>Log out</button>
-          </div>
-        ) : (
-          <div>
-            <button onClick={onClickMetaMask}>MetaMask Login</button>
-          </div>
-        )}
-      </div>
-    </header>
+    <div>
+      <header className=" p-2 flex justify-between bg-black font-LOTTE">
+        <div className="flex text-white text-xl gap-4 ">
+          <Link to="/">Home</Link>
+          <Link to="/my">My</Link>
+          <Link to="/sale">Sale</Link>
+        </div>
+
+        <div className="text-semibold text-white text-xl">
+          {account ? (
+            <div>
+              <span>
+                {account.substring(0, 7)}...
+                {account.substring(account.length - 5)}
+              </span>
+              <button onClick={() => setAccount("")}>: Log out</button>
+            </div>
+          ) : (
+            <div>
+              <button onClick={onClickMetaMask}>MetaMask Login</button>
+            </div>
+          )}
+        </div>
+      </header>
+    </div>
   );
 };
 

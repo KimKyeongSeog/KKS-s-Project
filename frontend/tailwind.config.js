@@ -2,7 +2,8 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {}
+    extend: {},
+    fontFamily: { LOTTE: ["lotte"] }
   },
   plugins: []
 };

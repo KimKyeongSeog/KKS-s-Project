@@ -1,13 +1,28 @@
 import { FC, useEffect, useState } from "react";
 import MintModal from "../components/MintModal";
 import { NftMetadata, OutletContext } from "../types";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import axios from "axios";
+import MyNftCard from "../components/MyNftCard";
+import { SALE_NFT_CONTRACT } from "../abis/contractAddress";
 
 const My: FC = () => {
   const [isOpen, setIsOpen] = useState<Boolean>(false);
   const [metadataArray, setMetadataArray] = useState<NftMetadata[]>([]);
+  const [saleStatus, setSaleStatus] = useState<boolean>(false);
+
   const { mintNftContract, account } = useOutletContext<OutletContext>();
+
+  const navigate = useNavigate();
+
+  const [lightHover, setLightHover] = useState<boolean>(false);
+  const onMouseEnter = () => {
+    setLightHover(true);
+  };
+
+  const onMouseLeave = () => {
+    setLightHover(false);
+  };
 
   const onClickMintModal = () => {
     if (!account) return;
@@ -26,7 +41,7 @@ const My: FC = () => {
 
       let temp: NftMetadata[] = [];
 
-      for (let i = 0; Number(balance); i++) {
+      for (let i = 0; i < Number(balance); i++) {
         const tokenId = await mintNftContract.methods
           // @ts-expect-error
           .tokenOfOwnerByIndex(account, i)
@@ -47,24 +62,102 @@ const My: FC = () => {
     }
   };
 
+  const getSaleStatus = async () => {
+    try {
+      const isApproved: boolean = await mintNftContract.methods
+        //@ts-expect-error
+        .isApprovedForAll(account, SALE_NFT_CONTRACT)
+        .call();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onClickSaleStatus = async () => {
+    try {
+      const response = await mintNftContract.methods
+        //@ts-expect-error
+        .setApprovalForAll(SALE_NFT_CONTRACT, !saleStatus)
+        .send({ from: account });
+
+      setSaleStatus(!saleStatus);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getMyNFTs();
   }, [mintNftContract, account]);
+
+  useEffect(() => {
+    if (account) return;
+
+    navigate("/");
+  }, [account]);
+
+  useEffect(() => {
+    if (!account) return;
+
+    getSaleStatus();
+  }, [account]);
+
   return (
-    <div className="">
-      <div className="grow">
-        <div className="text-right p-2">
-          <button
-            className="bg-blue-100 grow py-2 px-4"
-            onClick={onClickMintModal}
+    <div className="bg-set">
+      <div className="bg-black py-8 h-36 w-full mt-32 z-10">
+        <h1 className="mt-6 font-LOTTE text-2xl text-white text-center border-2 w-48 mx-auto">
+          MY NFTs
+        </h1>
+      </div>
+
+      <div>
+        <div className="flex justify-between">
+          <div
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            className=" h-16 w-36 m-8 font-LOTTE bg-gray-500 bg-opacity-70 rounded-full"
           >
-            Mint
-          </button>
+            {lightHover ? (
+              <div className="flex">
+                <img className="h-16" src="./images/LightOn.png" alt="light" />
+                <button
+                  className="text-2xl text-yellow-400"
+                  onClick={onClickMintModal}
+                >
+                  Mint
+                </button>
+              </div>
+            ) : (
+              <div className="flex">
+                <img className="h-16" src="./images/LightOff.png" alt="light" />
+                <button className="text-2xl " onClick={onClickMintModal}>
+                  Mint
+                </button>
+              </div>
+            )}
+          </div>
+
+          <div className=" h-16 w-32 m-8 font-LOTTE bg-gray-500 bg-opacity-70 rounded-full">
+            <button
+              onClick={onClickSaleStatus}
+              className={`pt-[6px] ${
+                saleStatus ? `text-yellow-400` : `text-black`
+              }`}
+            >
+              Sale Approved
+            </button>
+          </div>
         </div>
-        <div className="bg-green-300 text-center py-8">
-          <h1 className=" font-bold text-2xl">My NFTs</h1>
-        </div>
-        <ul>card</ul>
+        <ul className="p-8 grid grid-cols-3 gap-8 max-w-screen-lg mx-auto">
+          {metadataArray?.map((v, i) => (
+            <MyNftCard
+              key={i}
+              image={v.image}
+              name={v.name}
+              tokenId={v.tokenId!}
+              saleStatus={saleStatus}
+            />
+          ))}
+        </ul>
         <div>
           {isOpen && (
             <MintModal
