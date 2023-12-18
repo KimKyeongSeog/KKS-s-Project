@@ -118,7 +118,11 @@ const My: FC = () => {
           >
             {lightHover ? (
               <div className="flex">
-                <img className="h-16" src="./images/LightOn.png" alt="light" />
+                <img
+                  className="h-16"
+                  src={`${process.env.PUBLIC_URL}/images/LightOn.png`}
+                  alt="light"
+                />
                 <button
                   className="text-2xl text-yellow-400"
                   onClick={onClickMintModal}
@@ -128,7 +132,11 @@ const My: FC = () => {
               </div>
             ) : (
               <div className="flex">
-                <img className="h-16" src="./images/LightOff.png" alt="light" />
+                <img
+                  className="h-16"
+                  src={`${process.env.PUBLIC_URL}/images/LightOff.png`}
+                  alt="light"
+                />
                 <button className="text-2xl " onClick={onClickMintModal}>
                   Mint
                 </button>
