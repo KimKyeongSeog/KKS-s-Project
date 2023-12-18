@@ -24,11 +24,17 @@ const NftCard: FC<NftCardProps> = ({ image, name, tokenId }) => {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <img src={image} alt={name} />
-        <div className="font-semibold mt-1">{name}</div>
-        {isHover && (
-          <div className="absolute top-0 left-0 w-full h-full bg-gray-300 bg-opacity-50"></div>
-        )}
+        <div className="border-4 w-64  bg-white bg-opacity-90 border-dashed m-8 p-4 border-black border-opacity-90">
+          <img className="" src={image} alt={name} />
+          <div className="font-semibold font-gang text-2xl text-center mt-4">
+            {name}
+          </div>
+          {isHover && (
+            <div className="absolute top-0 ml-8 left-0 w-64 h-full bg-white bg-opacity-70 text-center text-2xl py-32 font-LOTTE">
+              Detail...
+            </div>
+          )}
+        </div>
       </li>
     </Link>
   );

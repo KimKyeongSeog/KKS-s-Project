@@ -114,7 +114,7 @@ const My: FC = () => {
           <div
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            className=" h-16 w-36 m-8 font-LOTTE bg-gray-500 bg-opacity-70 rounded-full"
+            className=" h-16 w-36 m-12 font-LOTTE bg-gray-500 bg-opacity-70 rounded-full"
           >
             {lightHover ? (
               <div className="flex">
@@ -136,10 +136,10 @@ const My: FC = () => {
             )}
           </div>
 
-          <div className=" h-16 w-32 m-8 font-LOTTE bg-gray-500 bg-opacity-70 rounded-full">
+          <div className=" h-16 w-32 m-12 font-LOTTE bg-gray-500 bg-opacity-70 rounded-full">
             <button
               onClick={onClickSaleStatus}
-              className={`pt-[6px] ${
+              className={`pt-[6px] hover:text-yellow-400 active:text-black ${
                 saleStatus ? `text-yellow-400` : `text-black`
               }`}
             >
@@ -147,7 +147,7 @@ const My: FC = () => {
             </button>
           </div>
         </div>
-        <ul className="p-8 grid grid-cols-3 gap-8 max-w-screen-lg mx-auto">
+        <ul className="px-8 grid grid-cols-3 gap-8 max-w-screen-lg mx-auto">
           {metadataArray?.map((v, i) => (
             <MyNftCard
               key={i}

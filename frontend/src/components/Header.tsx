@@ -22,10 +22,12 @@ const Header: FC<HeaderProps> = ({ account, setAccount }) => {
 
   return (
     <div>
-      <header className=" p-2 flex justify-between bg-black font-LOTTE">
+      <header className=" py-6 px-12 flex justify-between bg-black font-LOTTE">
         <div className="flex text-white text-xl gap-4 ">
           <Link to="/">Home</Link>
+          <div className="mt-[3px] w-1 rounded-2xl h-6 bg-white"></div>
           <Link to="/my">My</Link>
+          <div className="mt-[3px] w-1 rounded-2xl h-6 bg-white"></div>
           <Link to="/sale">Sale</Link>
         </div>
 

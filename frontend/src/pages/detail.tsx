@@ -4,9 +4,9 @@ import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Detail: FC = () => {
-  const [metadata, setMetadata] = useState<NftMetadata>();
-
   const { tokenId } = useParams();
+
+  const [metadata, setMetadata] = useState<NftMetadata>();
 
   const { mintNftContract } = useOutletContext<OutletContext>();
 
@@ -37,7 +37,7 @@ const Detail: FC = () => {
     <div className="bg-set">
       <div>
         <button
-          className="mt-40 ml-8 h-16 w-36 text-2xl font-LOTTE bg-gray-500 bg-opacity-70 hover:text-yellow-400 rounded-full"
+          className="mt-48 ml-8 h-16 w-36 text-2xl font-LOTTE bg-gray-500 bg-opacity-70 hover:text-yellow-400 rounded-full"
           onClick={() => navigate(-1)}
         >
           Back
@@ -46,18 +46,18 @@ const Detail: FC = () => {
       <div className="mt-4">
         {metadata && (
           <div>
-            <div className=" w-[480px] mx-auto text-center border-black border-dashed border-4">
+            <div className=" w-[360px] mx-auto text-center border-black border-dashed border-4">
               <img
-                className="w-full p-8"
+                className="w-full p-8 bg-white bg-opacity-90"
                 src={metadata.image}
                 alt={metadata.name}
               />
-              <div className="bg-gray-200 bg-opacity-90 border-t-4 border-dashed border-black text-xl font-bold pb-2">
+              <div className="bg-white bg-opacity-90 border-t-4 border-dashed border-black text-3xl font-bold font-gang pb-2">
                 {metadata.description}
               </div>
-              <ul className="bg-gray-200 bg-opacity-90">
+              <ul className="bg-white bg-opacity-90">
                 {metadata.attributes.map((v, i) => (
-                  <li className="semi-bold" key={i}>
+                  <li className="semi-bold font-gang text-2xl" key={i}>
                     <span>{v.trait_type}</span>
                     <span>{v.value}</span>
                   </li>
@@ -65,7 +65,7 @@ const Detail: FC = () => {
               </ul>
             </div>
 
-            <div className="w-full bottom-0 text-center text-white text-4xl font-LOTTE bg-black p-4">
+            <div className="w-full mt-12 text-center text-white text-4xl font-LOTTE p-4 bg-gradient-to-r from-red-500 via-green-500 to-blue-500">
               {metadata.name}
             </div>
           </div>

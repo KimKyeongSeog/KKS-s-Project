@@ -51,41 +51,58 @@ const MintModal: FC<MintModalProps> = ({
     }
   };
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 flex justify-center items-center">
-      <div className="p-8 bg-white rounded-xl">
+    <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 flex flex-col justify-center items-center">
+      <div className="p-8 bg-white border-dashed border-4 border-black">
         {metadata ? (
-          <div className="w-60">
-            <img
-              className="w-60 h-60"
-              src={metadata.image}
-              alt={metadata.name}
-            />
-            <div className="font-semibold mt-4 text-center">
-              {metadata.name}
+          <>
+            <div className="w-72 text-center">
+              <img
+                className="w-72 h-72"
+                src={metadata.image}
+                alt={metadata.name}
+              />
+              <div className="font-semibold mt-4 text-center font-gang text-4xl">
+                {metadata.name}
+              </div>
+              <div className="mx-2 text-center font-gang text-2xl mb-4">
+                {metadata.description}
+              </div>
+              <ul className="mt-1 flex flex-wrap gap-1">
+                {metadata.attributes.map((v, i) => (
+                  <li className="font-gang text-2xl flex" key={i}>
+                    <span className="font-semibold">{v.trait_type}</span>
+                    <span> : {v.value}</span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="font-LOTTE text-3xl border-b-2 border-black mt-4 hover:text-yellow-400 active:text-black"
+                onClick={() => setIsOpen(false)}
+              >
+                Close
+              </button>
             </div>
-            <div className="mx-2 text-sm text-center">
-              {metadata.description}
-            </div>
-            <ul className="mt-1 flex flex-wrap gap-1">
-              {metadata.attributes.map((v, i) => (
-                <li key={i}>
-                  <span className="font-semibold">{v.trait_type}</span>
-                  <span> : {v.value}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          </>
         ) : (
           <div className="flex flex-col items-center">
-            <div>{isLoading ? "Loading..." : "NFT를 민팅하시겠습니까?"}</div>
-            <div className="border-orange-500 border-4 rounded-2xl text-center mt-4 w-16 ">
+            <div className="font-gang text-3xl">
+              {isLoading
+                ? "Loading..."
+                : "Would you like to mint your own NFT?"}
+            </div>
+
+            <div
+              className={`font-LOTTE text-3xl border-b-2 border-black mt-4 hover:text-yellow-400 active:text-black
+            ${isLoading ? `hidden` : `visible`}
+            `}
+            >
               <button onClick={onClickMint}>Agree</button>
+            </div>
+            <div className="font-LOTTE text-3xl border-b-2 border-black mt-4 hover:text-yellow-400">
+              <button onClick={() => setIsOpen(false)}>Close</button>
             </div>
           </div>
         )}
-        <div className="border-orange-500 border-4 rounded-2xl text-center mt-4 w-16 hover:text-gray-500 mx-auto">
-          <button onClick={() => setIsOpen(false)}>Close</button>
-        </div>
       </div>
     </div>
   );

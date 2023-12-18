@@ -83,7 +83,7 @@ const Home: FC = () => {
   }, [metadataArray]);
 
   return (
-    <div className="bg-set">
+    <div className="bg-set w-full h-full">
       <div className="max-w-screen">
         <div className="bg-black py-8 h-36 mt-32 z-10">
           <h1 className="mt-6 font-LOTTE text-2xl text-white text-center border-2 w-48 mx-auto">
@@ -91,7 +91,7 @@ const Home: FC = () => {
           </h1>
         </div>
         <ul className=" max-w-screen-lg mx-auto">
-          <li className="grid grid-cols-3">
+          <li className="grid gap-8 grid-cols-3">
             {metadataArray?.map((v, i) => (
               <NftCard
                 key={i}
