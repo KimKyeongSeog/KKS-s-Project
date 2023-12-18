@@ -46,13 +46,13 @@ const Detail: FC = () => {
       <div className="mt-4">
         {metadata && (
           <div>
-            <div className=" w-[360px] mx-auto text-center border-black border-dashed border-4">
+            <div className=" w-[360px] mx-auto text-center border-black border-4">
               <img
                 className="w-full p-8 bg-white bg-opacity-90"
                 src={metadata.image}
                 alt={metadata.name}
               />
-              <div className="bg-white bg-opacity-90 border-t-4 border-dashed border-black text-3xl font-bold font-gang pb-2">
+              <div className="bg-white bg-opacity-90 border-t-4 border-black text-3xl font-bold font-gang pb-2">
                 {metadata.description}
               </div>
               <ul className="bg-white bg-opacity-90">

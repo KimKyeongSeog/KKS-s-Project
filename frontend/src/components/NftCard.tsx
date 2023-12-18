@@ -24,7 +24,7 @@ const NftCard: FC<NftCardProps> = ({ image, name, tokenId }) => {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div className="border-4 w-64  bg-white bg-opacity-90 border-dashed m-8 p-4 border-black border-opacity-90">
+        <div className="border-4 w-64  bg-white bg-opacity-90 m-8 p-4 border-black border-opacity-90">
           <img className="" src={image} alt={name} />
           <div className="font-semibold font-gang text-2xl text-center mt-4">
             {name}
