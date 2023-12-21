@@ -83,7 +83,7 @@ const Home: FC = () => {
   }, [metadataArray]);
 
   return (
-    <div className="bg-set w-full h-full">
+    <div className=" w-full h-full">
       <div className="max-w-screen">
         <div className="bg-black py-8 h-36 mt-32 z-10">
           <h1 className="mt-6 font-LOTTE text-2xl text-white text-center border-2 w-48 mx-auto">

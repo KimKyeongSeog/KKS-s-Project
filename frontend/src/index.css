@@ -17,10 +17,3 @@
   font-weight: normal;
   font-style: normal;
 }
-
-@layer components {
-  .bg-set {
-    background-image: url("../public/images/bg.jpg");
-    background-position-x: center;
-  }
-}

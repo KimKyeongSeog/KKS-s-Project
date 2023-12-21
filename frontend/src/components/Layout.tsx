@@ -59,7 +59,7 @@ const Layout: FC = () => {
   }, []);
   return (
     <>
-      <div className="bg-set">
+      <div>
         <div className="fixed top-0 w-full z-10">
           <Header account={account} setAccount={setAccount} />
           <div className="bg-black h-24 text-5xl text-white text-center font-LOTTE">

@@ -34,7 +34,7 @@ const Detail: FC = () => {
   }, [mintNftContract]);
 
   return (
-    <div className="bg-set">
+    <div className="">
       <div>
         <button
           className="mt-48 ml-8 h-16 w-36 text-2xl font-LOTTE bg-gray-500 bg-opacity-70 hover:text-yellow-400 rounded-full"
