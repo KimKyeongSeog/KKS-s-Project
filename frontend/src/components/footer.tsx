@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const Footer: FC = () => {
   return (
-    <div className="text-white bg-black w-full h-64 flex justify-between items-center p-16">
+    <div className="text-white mt-20 bg-black w-full h-64 flex justify-between items-center p-16">
       <div className=" font-LOTTE">
         <div className="text-4xl">Cartoon NFT SHOP</div>
         <div className="text-4xl pt-8">KKS's Project</div>

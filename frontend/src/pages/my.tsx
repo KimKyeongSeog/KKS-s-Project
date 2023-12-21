@@ -68,6 +68,8 @@ const My: FC = () => {
         //@ts-expect-error
         .isApprovedForAll(account, SALE_NFT_CONTRACT)
         .call();
+
+      setSaleStatus(isApproved);
     } catch (error) {
       console.log(error);
     }

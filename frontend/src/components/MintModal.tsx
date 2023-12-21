@@ -51,7 +51,7 @@ const MintModal: FC<MintModalProps> = ({
     }
   };
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 flex flex-col justify-center items-center">
+    <div className="fixed top-8 left-0 w-full h-full bg-white bg-opacity-50 flex flex-col justify-center items-center">
       <div className="p-8 bg-white border-4 border-black">
         {metadata ? (
           <>
