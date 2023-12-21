@@ -120,7 +120,7 @@ const My: FC = () => {
               <div className="flex">
                 <img
                   className="h-16"
-                  src={`${process.env.PUBLIC_URL}/images/Lighton.png`}
+                  src={`./images/Lighton.png`}
                   alt="light"
                 />
                 <button
@@ -134,7 +134,7 @@ const My: FC = () => {
               <div className="flex">
                 <img
                   className="h-16"
-                  src={`${process.env.PUBLIC_URL}/images/Lightoff.png`}
+                  src={`./images/Lightoff.png`}
                   alt="light"
                 />
                 <button className="text-2xl " onClick={onClickMintModal}>
